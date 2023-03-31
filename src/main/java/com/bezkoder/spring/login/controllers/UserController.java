@@ -1,6 +1,7 @@
 package com.bezkoder.spring.login.controllers;
 
 import com.bezkoder.spring.login.models.User;
+import com.bezkoder.spring.login.repository.UserRepository;
 import com.bezkoder.spring.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,12 @@ public class UserController {
     @Autowired
 
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
+    @GetMapping("/stats")
+    public int getNombre(){
+        return userRepository.nombre().size();
+    }
 
     @GetMapping("/read")
     public List<User> read() {

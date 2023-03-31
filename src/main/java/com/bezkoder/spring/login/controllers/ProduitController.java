@@ -1,6 +1,7 @@
 package com.bezkoder.spring.login.controllers;
 
 import com.bezkoder.spring.login.models.Produit;
+import com.bezkoder.spring.login.repository.ProduitRepository;
 import com.bezkoder.spring.login.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,23 @@ public class ProduitController {
     @Autowired
 
     private ProduitService produitService;
+    @Autowired
+    private ProduitRepository produitRepository;
+
+
+    @GetMapping("/stats")
+    public int getProdPrix(){
+        return produitRepository.prodPrix().size();
+    }
+
+    @GetMapping("/Nom")
+    public int getProdNom(){
+        return produitRepository.name().size();
+    }
+    @GetMapping("/nbProduit")
+    public int getNombre(){
+        return produitRepository.nbProduit().size();
+    }
 
     @PostMapping("/create")
     public Produit create(@RequestBody Produit produit) {
