@@ -18,6 +18,10 @@ public class Transaction {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id_Transaction;
+    private Integer montant;
+    @Enumerated(EnumType.STRING)
+    private MethodePaiement methodePaiement;
+    private String statut_de_la_transaction;
     @Enumerated(EnumType.STRING)
     private TypeTransaction typeTransaction;
     @ManyToOne

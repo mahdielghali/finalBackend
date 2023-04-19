@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/client")
@@ -70,5 +72,9 @@ public class ClientController {
     @DeleteMapping("/delete/{id}")
     public String detete(@PathVariable Long id) {
         return clientService.supprimer(id);
+    }
+    @GetMapping("/retournerClient/{id}")
+    public Optional<Client> retournerClientById(@PathVariable Long id){
+        return clientService.retournerClientById(id);
     }
 }

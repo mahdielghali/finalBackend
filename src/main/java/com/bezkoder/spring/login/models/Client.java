@@ -22,6 +22,7 @@ public class Client {
 
     private Long id_Client ;
     private String nom ;
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_naissance ;
     private Long num_telephone ;

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 
@@ -48,7 +50,6 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<Transaction> lire() {
-        System.out.println("hadile");
         return transactionRepository.findAll();
     }
 
@@ -57,6 +58,11 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionRepository.findById(id)
                 .map(t -> {
                     t.setTypeTransaction(transaction.getTypeTransaction());
+                    t.setMontant(transaction.getMontant());
+                    t.setMethodePaiement(transaction.getMethodePaiement());
+                    t.setStatut_de_la_transaction(transaction.getStatut_de_la_transaction());
+                    t.setProduit(transaction.getProduit());
+                    t.setClient(transaction.getClient());
                     return transactionRepository.save(t);
                 }).orElseThrow(() -> new RuntimeException("Transaction non trouvé!"));
     }
@@ -65,5 +71,8 @@ public class TransactionServiceImpl implements TransactionService {
     public String supprimer(Long id) {
         transactionRepository.deleteById(id);
         return "Transaction supprimé!";
+    }
+    public Optional<Transaction> retournerTransactionById(Long id){
+        return transactionRepository.findById(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.bezkoder.spring.login.controllers;
 
+import com.bezkoder.spring.login.models.Client;
 import com.bezkoder.spring.login.models.Transaction;
 import com.bezkoder.spring.login.repository.TransactionRepository;
 import com.bezkoder.spring.login.service.TransactionService;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 
 @RestController
@@ -60,8 +63,13 @@ public class TransactionController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String detete(@PathVariable Long id) {
+    public String delete(@PathVariable Long id) {
         return transactionService.supprimer(id);
+    }
+
+    @GetMapping("/retournerTransaction/{id}")
+    public Optional<Transaction> retournerTransactionById(@PathVariable Long id){
+        return transactionService.retournerTransactionById(id);
     }
 
 }
