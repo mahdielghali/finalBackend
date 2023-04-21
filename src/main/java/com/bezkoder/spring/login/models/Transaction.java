@@ -21,7 +21,8 @@ public class Transaction {
     private Integer montant;
     @Enumerated(EnumType.STRING)
     private MethodePaiement methodePaiement;
-    private String statut_de_la_transaction;
+    @Enumerated(EnumType.STRING)
+    private StatutTransaction statutTransaction;
     @Enumerated(EnumType.STRING)
     private TypeTransaction typeTransaction;
     @ManyToOne

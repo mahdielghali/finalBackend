@@ -60,7 +60,7 @@ public class TransactionServiceImpl implements TransactionService {
                     t.setTypeTransaction(transaction.getTypeTransaction());
                     t.setMontant(transaction.getMontant());
                     t.setMethodePaiement(transaction.getMethodePaiement());
-                    t.setStatut_de_la_transaction(transaction.getStatut_de_la_transaction());
+                    t.setStatutTransaction(transaction.getStatutTransaction());
                     t.setProduit(transaction.getProduit());
                     t.setClient(transaction.getClient());
                     return transactionRepository.save(t);
