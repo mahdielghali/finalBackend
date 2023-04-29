@@ -20,4 +20,16 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query(value = " SELECT * FROM Transaction WHERE date_ajout >= '2023-01-01'" , nativeQuery = true)
     public List<Transaction> dateAjout();
 
+    @Query(value = "SELECT SUM(montant) FROM Transaction", nativeQuery = true)
+    public int sommeTransaction();
+
+    @Query(value = "Select * from Transaction  where  date_ajout >= NOW() - INTERVAL 1 Month " , nativeQuery = true)
+    public List<Transaction> transactionLastMonth();
+
+    @Query(value = "Select * from Transaction  where date_ajout  >= NOW() - INTERVAL 3 DAY" , nativeQuery = true)
+    public List<Transaction> transactionLastDay();
+
+    @Query(value = "Select * from Transaction  where  date_ajout >= NOW() - INTERVAL 1 YEAR " , nativeQuery = true)
+    public List<Transaction> transactionLastYear();
+
 }

@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
+
 @Entity
 @Table(name = "TRANSACTION")
 @Getter
@@ -19,6 +22,12 @@ public class Transaction {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id_Transaction;
     private Integer montant;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date_ajout ;
+
+    private  Integer sommeTransaction;
     @Enumerated(EnumType.STRING)
     private MethodePaiement methodePaiement;
     @Enumerated(EnumType.STRING)

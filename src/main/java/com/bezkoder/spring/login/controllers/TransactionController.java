@@ -72,4 +72,25 @@ public class TransactionController {
         return transactionService.retournerTransactionById(id);
     }
 
+    @GetMapping("/sommeTransaction")
+    public int getSomme(){
+        return transactionRepository.sommeTransaction();
+    }
+
+    @GetMapping("/lastmonth")
+    public int getLastMonth() {
+        return transactionRepository.transactionLastMonth().size();
+    }
+
+    @GetMapping("/lastday")
+    public int getLastDay() {
+        return transactionRepository.transactionLastDay().size();
+    }
+
+    @GetMapping("/lastyear")
+    public int getLastYear() {
+        return transactionRepository.transactionLastYear().size();
+    }
+
+
 }

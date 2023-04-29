@@ -60,4 +60,10 @@ public class ProduitController {
     public Optional<Produit> retournerProduitById(@PathVariable Long id){
         return produitService.retournerProduitById(id);
     }
+
+    @GetMapping("/sommeProduit")
+    public int getSommeProduit(){
+        return produitRepository.sommeProduit();
+    }
+
 }

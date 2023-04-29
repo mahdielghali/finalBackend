@@ -63,6 +63,7 @@ public class TransactionServiceImpl implements TransactionService {
                     t.setStatutTransaction(transaction.getStatutTransaction());
                     t.setProduit(transaction.getProduit());
                     t.setClient(transaction.getClient());
+                    t.setDate_ajout(transaction.getDate_ajout());
                     return transactionRepository.save(t);
                 }).orElseThrow(() -> new RuntimeException("Transaction non trouvé!"));
     }

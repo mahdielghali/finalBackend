@@ -16,4 +16,7 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     @Query(value = "SELECT * FROM produit", nativeQuery = true)
     public List<Produit> nbProduit();
 
+    @Query(value = "SELECT SUM(prix) FROM Produit", nativeQuery = true)
+    public int sommeProduit();
+
 }
